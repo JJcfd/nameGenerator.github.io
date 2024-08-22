@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Instagram Username Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generate a Random Instagram Username</h1>
+        <button onclick="generateRandomUsername()">Generate Username</button>
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        function generateRandomUsername() {
+            const letters = 'abcdefghijklmnopqrstuvwxyz';
+            const digits = '0123456789';
+            const symbols = ['_', '.', '__', '___', '_x_', '.0_', '_o_', '_0_', '_y_'];
+            const randomLetter = () => letters.charAt(Math.floor(Math.random() * letters.length));
+            const randomDigit = () => digits.charAt(Math.floor(Math.random() * digits.length));
+            const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+
+            let username = randomSymbol;
+            for (let i = 0; i < 3; i++) {
+                username += randomLetter();
+            }
+            username += randomDigit();
+            username += randomSymbol;
+
+            document.getElementById('output').innerText = `Generated Username: ${username}`;
+        }
+    </script>
+</body>
+</html>
